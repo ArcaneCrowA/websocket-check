@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple Landing Page</title>
+        <link rel="stylesheet" href="style.css" />
+        <script>
+            // Command queue before SDK loads
+            window.n9s =
+                window.n9s ||
+                function () {
+                    (n9s.q = n9s.q || []).push(arguments);
+                };
+        </script>
+        <!-- SDK library connection -->
+        <script
+            async
+            src="https://back.test.crm-v2.acsolutions.ai/storage/n9s.v1.js"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <h1>MySite</h1>
+                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <script>
+                n9s("init", {
+                    appId: "app_KMcmsLocpKKRmByk", // Application ID from CRM system
+                    apiKey: "pk_dIxT3COU45hKIp2w0eebDbuRrMGQLcia", // Public API key for non-personalized notifications
+                    organization_id: "1", // Company ID from our CRM system
+                });
+            </script>
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to My Awesome Landing Page</h1>
+                    <p>
+                        Discover amazing features and services tailored just for
+                        you.
+                    </p>
+                    <button class="cta-button">Learn More</button>
+                </div>
+            </section>
+
+            <section id="features" class="features">
+                <h2>Our Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>Feature One</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua.
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Feature Two</h3>
+                        <p>
+                            Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Feature Three</h3>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <h2>About Us</h2>
+                <p>
+                    We are a passionate team dedicated to creating innovative
+                    solutions. Our mission is to provide the best experience for
+                    our users.
+                </p>
+                <p>Learn more about our journey and values.</p>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Contact Us</h2>
+                <p>Have questions? Feel free to reach out to us!</p>
+                <form>
+                    <input type="text" placeholder="Your Name" />
+                    <input type="email" placeholder="Your Email" />
+                    <textarea placeholder="Your Message"></textarea>
+                    <button type="submit" class="cta-button">
+                        Send Message
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 MySite. All rights reserved.</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
