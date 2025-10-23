@@ -13,7 +13,6 @@
         ></script>
     </head>
     <body>
-        <script src="assets/js/get_jwt.js"></script>
         <header>
             <nav>
                 <div class="logo">
@@ -31,24 +30,22 @@
         <main>
             <section id="home" class="hero">
                 <div class="hero-content">
-                    <h1>Welcome to My Awesome Landing Page</h1>
-                    <p>
-                        Discover amazing features and services tailored just for
-                        you.
-                    </p>
-                    <button class="cta-button">Learn More</button>
-                    <button
-                        class="cta-button"
-                        onclick="loadScript('assets/js/config_update.js')"
-                    >
-                        Update Config
-                    </button>
-                    <button
-                        class="cta-button"
-                        onclick="loadScript('assets/js/end_session.js')"
-                    >
-                        End Session
-                    </button>
+                    <h1>Login</h1>
+                    <form id="login-form">
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Username"
+                            required
+                        />
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            required
+                        />
+                        <button type="submit" class="cta-button">Login</button>
+                    </form>
                 </div>
             </section>
 
@@ -110,12 +107,6 @@
         </footer>
 
         <script src="assets/js/script.js"></script>
-        <script>
-            function loadScript(src) {
-                const script = document.createElement("script");
-                script.src = src;
-                document.body.appendChild(script);
-            }
-        </script>
+        <script src="assets/js/login.js"></script>
     </body>
 </html>
