@@ -4,8 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Simple Landing Page</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="functions/head.js" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <script src="assets/js/head.js"></script>
         <!-- SDK library connection -->
         <script
             async
@@ -13,7 +13,7 @@
         ></script>
     </head>
     <body>
-        <script src="functions/get_jwt.js" />
+        <script src="assets/js/get_jwt.js"></script>
         <header>
             <nav>
                 <div class="logo">
@@ -37,6 +37,18 @@
                         you.
                     </p>
                     <button class="cta-button">Learn More</button>
+                    <button
+                        class="cta-button"
+                        onclick="loadScript('assets/js/config_update.js')"
+                    >
+                        Update Config
+                    </button>
+                    <button
+                        class="cta-button"
+                        onclick="loadScript('assets/js/end_session.js')"
+                    >
+                        End Session
+                    </button>
                 </div>
             </section>
 
@@ -97,6 +109,13 @@
             <p>&copy; 2023 MySite. All rights reserved.</p>
         </footer>
 
-        <script src="script.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script>
+            function loadScript(src) {
+                const script = document.createElement("script");
+                script.src = src;
+                document.body.appendChild(script);
+            }
+        </script>
     </body>
 </html>
