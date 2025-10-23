@@ -5,14 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Simple Landing Page</title>
         <link rel="stylesheet" href="style.css" />
-        <script>
-            // Command queue before SDK loads
-            window.n9s =
-                window.n9s ||
-                function () {
-                    (n9s.q = n9s.q || []).push(arguments);
-                };
-        </script>
+        <script src="functions/head.js" />
         <!-- SDK library connection -->
         <script
             async
@@ -20,6 +13,7 @@
         ></script>
     </head>
     <body>
+        <script src="functions/get_jwt.js" />
         <header>
             <nav>
                 <div class="logo">
@@ -35,13 +29,6 @@
         </header>
 
         <main>
-            <script>
-                n9s("init", {
-                    appId: "app_KMcmsLocpKKRmByk", // Application ID from CRM system
-                    apiKey: "pk_dIxT3COU45hKIp2w0eebDbuRrMGQLcia", // Public API key for non-personalized notifications
-                    organization_id: "1", // Company ID from our CRM system
-                });
-            </script>
             <section id="home" class="hero">
                 <div class="hero-content">
                     <h1>Welcome to My Awesome Landing Page</h1>
