@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    fetch("https://23.88.42.12/api/login", {
+    fetch("https://23.88.42.122/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
