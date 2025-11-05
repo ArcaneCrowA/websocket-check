@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       console.log("Login response:", data);
 
-      if (data.type === "auth_success" && data.jwt) {
+      if (data.type === "auth_success" && data.token) {
         console.log("n9s function:", typeof n9s);
         console.log("SDK object:", window.N9sSDK);
 
