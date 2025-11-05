@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const initializeN9s = () => {
           n9s("init", {
             appId: "app_VDKIiNKEkpKbIgDR",
-            userToken: data.jwt,
+            userToken: data.token,
             user_id: data.user_id,
-            organization_id: data.organization_id,
+            organization_id: "1",
           });
           if (window.N9sSDK) {
             console.log(window.N9sSDK?._config);
