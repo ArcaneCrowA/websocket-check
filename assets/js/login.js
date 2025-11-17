@@ -4,6 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const userSessionElements = document.querySelectorAll(".user-session");
   const logoutButton = document.getElementById("logout-button");
 
+  const initializeN9s = (config) => {
+    const waitForN9s = () => {
+      if (typeof window.n9s === "function") {
+        window.n9s("init", config);
+      } else {
+        setTimeout(waitForN9s, 100);
+      }
+    };
+    waitForN9s();
+  };
+
   const updateUI = () => {
     if (sessionStorage.getItem("isLoggedIn") === "true") {
       if (loginSection) {
@@ -17,6 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
       userSessionElements.forEach((el) => (el.style.display = "none"));
     }
   };
+
+  // Check for session and initialize n9s on page load
+  const n9sConfigString = sessionStorage.getItem("n9sConfig");
+  if (n9sConfigString) {
+    const n9sConfig = JSON.parse(n9sConfigString);
+    initializeN9s(n9sConfig);
+  }
 
   updateUI();
 
@@ -47,27 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
 
         if (data.type === "auth_success" && data.token) {
-          const initializeN9s = () => {
-            window.n9s("init", {
-              appId: "app_VDKIiNKEkpKbIgDR",
-              userToken: data.token,
-              user_id: data.user_id,
-              organization_id: "1",
-            });
-            sessionStorage.setItem("isLoggedIn", "true");
-            alert("Login successful!");
-            updateUI();
+          const n9sConfig = {
+            appId: "app_VDKIiNKEkpKbIgDR",
+            userToken: data.token,
+            user_id: data.user_id,
+            organization_id: "1",
           };
 
-          const waitForN9s = () => {
-            if (typeof window.n9s === "function") {
-              initializeN9s();
-            } else {
-              setTimeout(waitForN9s, 100);
-            }
-          };
-
-          waitForN9s();
+          initializeN9s(n9sConfig);
+          sessionStorage.setItem("isLoggedIn", "true");
+          sessionStorage.setItem("n9sConfig", JSON.stringify(n9sConfig));
+          alert("Login successful!");
+          updateUI();
         } else {
           throw new Error("Token not provided");
         }
@@ -84,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.n9s("shutdown");
       }
       sessionStorage.removeItem("isLoggedIn");
+      sessionStorage.removeItem("n9sConfig"); // Remove config on logout
       alert("Logout successful!");
       updateUI();
       window.location.href = "index.html";
