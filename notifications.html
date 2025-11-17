@@ -9,7 +9,7 @@
         <!-- SDK library connection -->
         <script
             async
-            src="https://back.test.crm-v2.acsolutions.ai/storage/n9s.v1.js"
+            src="https://notification-sdk-test-v2.acsolutions.ai/dist/n9s.v1.js"
         ></script>
     </head>
     <body>
@@ -65,31 +65,28 @@
         <script src="assets/js/script.js"></script>
         <script src="assets/js/login.js"></script>
         <script>
-            const config = {
-                appId: "app_1234567890abcdef",
-            };
-
             async function loadMessages() {
                 try {
                     const result = await window.n9s("inbox.getMessages", {
-                        user_id: "user_demo",
                         limit: 20,
                         offset: 0,
                     });
 
                     const messagesList =
                         document.getElementById("messagesList");
-                    messagesList.innerHTML = result.data
-                        .map(
-                            (message) => `
+                    if (result && result.data) {
+                        messagesList.innerHTML = result.data
+                            .map(
+                                (message) => `
           <div class="message-item ${message.is_read ? "" : "unread"}" onclick="showMessage('${message.id}')">
             <div class="title">${message.title}</div>
             <div class="content">${message.content}</div>
             <div class="date">${new Date(message.created_at).toLocaleString()}</div>
           </div>
         `,
-                        )
-                        .join("");
+                            )
+                            .join("");
+                    }
                 } catch (error) {
                     console.error("Load messages error:", error);
                 }
@@ -122,9 +119,7 @@
 
             async function getUnreadCount() {
                 try {
-                    const result = await window.n9s("inbox.getUnreadCount", {
-                        user_id: "user_demo",
-                    });
+                    const result = await window.n9s("inbox.getUnreadCount", {});
 
                     const badge = document.getElementById("unread-badge");
                     badge.textContent = result.unread_count;
