@@ -65,9 +65,24 @@
         <script src="assets/js/script.js"></script>
         <script src="assets/js/login.js"></script>
         <script>
+            function getUserIdFromSession() {
+                const n9sConfigString = sessionStorage.getItem("n9sConfig");
+                if (n9sConfigString) {
+                    const n9sConfig = JSON.parse(n9sConfigString);
+                    return n9sConfig.user_id;
+                }
+                return null;
+            }
+
             async function loadMessages() {
                 try {
+                    const userId = getUserIdFromSession();
+                    if (!userId) {
+                        console.error("User not logged in");
+                        return;
+                    }
                     const result = await window.n9s("inbox.getMessages", {
+                        user_id: userId,
                         limit: 20,
                         offset: 0,
                     });
@@ -119,7 +134,14 @@
 
             async function getUnreadCount() {
                 try {
-                    const result = await window.n9s("inbox.getUnreadCount", {});
+                    const userId = getUserIdFromSession();
+                    if (!userId) {
+                        console.error("User not logged in");
+                        return;
+                    }
+                    const result = await window.n9s("inbox.getUnreadCount", {
+                        user_id: userId,
+                    });
 
                     const badge = document.getElementById("unread-badge");
                     badge.textContent = result.unread_count;
