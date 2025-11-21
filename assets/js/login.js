@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (data.type === "auth_success" && data.token) {
           const n9sConfig = {
-            appId: "app_VDKIiNKEkpKbIgDR",
+            appId: "app_C5Zo3d70LY9dQiHT",
             userToken: data.token,
             user_id: data.user_id,
             organization_id: "1",
