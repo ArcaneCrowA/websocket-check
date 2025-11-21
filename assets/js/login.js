@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             appId: "app_C5Zo3d70LY9dQiHT",
             userToken: data.token,
             user_id: data.user_id,
-            organization_id: "1",
+            organization_id: "3",
           };
 
           initializeN9s(n9sConfig);
