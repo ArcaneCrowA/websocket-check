@@ -66,10 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (data.type === "auth_success" && data.token) {
           const n9sConfig = {
-            appId: "app_C5Zo3d70LY9dQiHT",
+            appId: "app_px3Xb65wEDsqUIsA",
             userToken: data.token,
             user_id: data.user_id,
-            organization_id: "3",
+            organization_id: "200",
           };
 
           initializeN9s(n9sConfig);
